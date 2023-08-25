@@ -13,7 +13,7 @@
 | position           | text     | NOT NULL                               |
 
 ## Association
-- has_many :prototypes_users
+- has_many :prototypes
 - has_many :comments
 
 ## prototypesテーブル
@@ -26,7 +26,7 @@
 | user_id            | string   | NOT NULL,外部キー                       |
 
 ## Association
-- has_many :prototypes_users
+- has_many :prototypes
 - has_many :users
 - has_many :comments
 
@@ -40,4 +40,3 @@
 
 - belongs_to :prototype
 - belongs_to :user
-- belongs_to :
