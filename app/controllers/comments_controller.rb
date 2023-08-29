@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to prototype_path(@comment.prototype)
     else
-      puts @comment.errors.full_messages
-      @prototype = Prototype.find(params[:prototype_id])
+      @prototype = @comment.prototype
+      @comments = @prototype.comments
       render "prototypes/show"
     end
   end
