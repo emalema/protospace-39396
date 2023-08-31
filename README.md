@@ -1,42 +1,41 @@
 # README
-# テーブル設計
+# DB設計
 
-## usersテーブル
+## users table
 
 | Column             | Type     | Options                                |
 | ------------------ |----------|--------------------------------------- |
-| email              | string   | NOT NULL,unique: true                  |
-| encrypted_password | string   | NOT NULL                               |
-| name               | string   | NOT NULL                               |
-| profile            | text     | NOT NULL                               |
-| occupation         | text     | NOT NULL                               |
-| position           | text     | NOT NULL                               |
+| email              | string   | null:false,unique: true                |
+| encrypted_password | string   | null:false                             |
+| name               | string   | null:false                             |
+| profile            | text     | null:false                             |
+| occupation         | text     | null:false                             |
+| position           | text     | null:false                             |
 
 ## Association
 - has_many :prototypes
 - has_many :comments
 
-## prototypesテーブル
+## prototypes table
 
 | Column             | Type     | Options                                |
 | ------------------ |----------|--------------------------------------- |
-| title              | string   | NOT NULL                               |
-| catch_copy         | text     | NOT NULL                               |
-| concept            | text     | NOT NULL                               |
-| user_id            | string   | NOT NULL,外部キー                       |
+| title              | string   | null:false                             |
+| catch_copy         | text     | null:false                             |
+| concept            | text     | null:false                             |
+| user_id            | string   | null:false,foreign_key:true            |
 
 ## Association
-- has_many :prototypes
-- has_many :users
+- belongs_to :user
 - has_many :comments
 
 ## commentsテーブル
 
 | Column             | Type       | Options                                |
 | ------------------ |----------  |--------------------------------------- |
-| content            | text       | NOT NULL                               |
-| prototype_id       | references | NOT NULL                               |
-| concept            | references | NOT NULL                               |
+| content            | text       | null:false                             |
+| prototype_id       | references | null:false,foreign_key:true            |
+| concept            | references | null:false,foreign_key:true            |
 
 - belongs_to :prototype
 - belongs_to :user
